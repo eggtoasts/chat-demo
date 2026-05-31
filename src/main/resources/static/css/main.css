@@ -4,11 +4,15 @@
 
 
 #messageArea {
-    max-height: 200px;
-    max-width: 200px;
+    min-height: 400px;
+    min-width: 500px;
     overflow-y: auto;
 }
 
 li {
     list-style:none;
+}
+
+.hidden {
+    display: none;
 }

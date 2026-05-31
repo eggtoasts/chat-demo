@@ -8,6 +8,8 @@ const messageForm = document.querySelector('#messageForm');
 const messageInput = document.querySelector('#message');
 const messageArea = document.querySelector('#messageArea');
 const connectingElement = document.querySelector('.connecting')
+const usernamePage = document.querySelector('#username-page');
+const chatPage = document.querySelector('#chat-page');
 
 const searchBar = document.querySelector('#search');
 const gifBox = document.querySelector('#gif-results');
@@ -74,6 +76,9 @@ function connect(e) {
         stompClient = Stomp.over(socket);
         stompClient.connect({}, onConnected, onError);
     }
+
+    usernamePage.classList.add('hidden');
+    chatPage.classList.remove('hidden');
 
     e.preventDefault();
 }
