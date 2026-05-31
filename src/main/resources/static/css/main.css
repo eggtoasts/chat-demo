@@ -1,0 +1,14 @@
+* {
+    font-family: 'Gaegu';
+}
+
+
+#messageArea {
+    max-height: 200px;
+    max-width: 200px;
+    overflow-y: auto;
+}
+
+li {
+    list-style:none;
+}
