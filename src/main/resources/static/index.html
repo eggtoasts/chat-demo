@@ -1,10 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>chat-demo</title>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-$END$
+
+
+<div id="username-page">
+    <div class="container">
+        <h1>Type your username to enter the chat.</h1>
+        <form id="usernameForm">
+
+            <div class="form-group">
+                <input type="text" id="name" placeholder="Username" autocomplete ="off"/>
+            </div>
+
+            <div class="form-group">
+                <button type="submit"> Start Chatting </button>
+            </div>
+
+
+
+        </form>
+    </div>
+</div>
+
+<div id="chat-page" class="hidden">
+    <div class ="chat">
+        <h2>chat!</h2>
+
+        <div class = "connecting">
+            Connecting...
+        </div>
+
+
+        <ul id="messageArea">
+
+
+        </ul>
+
+        <form id="messageForm" name="messageForm">
+            <div class ="message-input">
+                <input type="text" id="message" placeholder="Type a message..." autocomplete="off"/>
+                <button type="submit">Send</button>
+            </div>
+        </form>
+
+
+        <div>
+            <h2>Gif Search</h2>
+            <input type="text" id="search" placeholder="Search for gifs" autocomplete="off">
+
+            <div id="gif-results"></div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>

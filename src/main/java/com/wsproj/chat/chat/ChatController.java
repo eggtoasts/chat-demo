@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class ChatController {
     //add a user (like a user joined this chat!)
-    @MessageMapping("/addUser")
+    @MessageMapping("/chat.addUser")
     @SendTo("/topics/general")
     public ChatMessage addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor){
         //the headeraccessors allows us to establish a connection
@@ -24,11 +24,9 @@ public class ChatController {
     }
 
     //send a message
-    @MessageMapping("/chat") //listens to methods sent to /app/chat
+    @MessageMapping("/chat.sendMessage") //listens to methods sent to /app/chat
     @SendTo("/topics/general") //broadcasts return value to /topics/general
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage){
         return chatMessage;
     }
-
-    //w/ request payload
 }
