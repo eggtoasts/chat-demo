@@ -47,6 +47,13 @@ function onMessageReceived(payload) {
         messageCard.innerHTML = `<p>${message.sender} left. </p>`
     }
 
+    if(message.type === "GIF"){
+        messageCard.innerHTML = `
+        <p>${message.sender}:</p>
+        <img src="${message.content}" alt="gif" />
+    `
+    }
+
     messageArea.appendChild(messageCard);
 
 }
@@ -105,14 +112,24 @@ async function searchGifs(query) {
     let dataArray = data.data;
 
     if (dataArray) {
-        dataArray.forEach((gif) => {
+        dataArray.forEach( (gif) => {
             const gifBlock = document.createElement("img");
-
             gifBlock.src = gif.images.fixed_height.url;
             gifBlock.alt = gif.title || "Giphy GIF";
 
+            // send through websocket when clicked
+            gifBlock.addEventListener("click", () => {
+                let chatMessage = {
+                    sender: username,
+                    content: gif.images.fixed_height.url,
+                    type: 'GIF'
+                };
+                stompClient.send("/app/chat.sendMessage", {}, JSON.stringify(chatMessage));
+                gifBox.innerHTML = ""; // close the gif picker after sending
+            });
+
             gifBox.appendChild(gifBlock);
-        });
+        })
     }
     return data;
 }

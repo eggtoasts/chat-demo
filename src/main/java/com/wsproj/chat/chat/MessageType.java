@@ -1,5 +1,5 @@
 package com.wsproj.chat.chat;
 
 public enum MessageType {
-    CHAT, JOIN, LEAVE
+    CHAT, JOIN, LEAVE, GIF
 }
